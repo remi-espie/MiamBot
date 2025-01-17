@@ -1,32 +1,32 @@
 {
-  "name": "miambot",
-  "version": "1.0.0",
-  "description": "A discord bot designed to show infos about miam miam stuff",
-  "main": "main.js",
-  "scripts": {
-    "dev": "tsx watch src/main.ts",
-    "start": "node dist/main.js",
-    "build": "tsup src/main.ts --minify",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "keywords": [
-    "miam"
-  ],
-  "author": "wh0w",
-  "license": "ISC",
-  "dependencies": {
-    "discord.js": "^14.16.3",
-    "dotenv": "^16.4.7",
-    "node-html-parser": "^6.1.13",
-    "toad-scheduler": "^3.0.1"
-  },
-  "devDependencies": {
-    "@typescript-eslint/eslint-plugin": "^8.20.0",
-    "@typescript-eslint/parser": "^8.20.0",
-    "eslint": "^8.57.1",
-    "prettier": "^3.4.2",
-    "tsup": "^8.3.5",
-    "tsx": "^4.19.2",
-    "typescript": "^5.7.2"
-  }
+    "name": "miambot",
+    "version": "1.0.0",
+    "description": "A discord bot designed to show infos about miam miam stuff",
+    "main": "main.js",
+    "scripts": {
+        "dev": "tsx watch src/main.ts",
+        "start": "node dist/main.js",
+        "build": "tsup src/main.ts --minify",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "keywords": [
+        "miam"
+    ],
+    "author": "wh0w",
+    "license": "ISC",
+    "dependencies": {
+        "discord.js": "^14.16.3",
+        "dotenv": "^16.4.7",
+        "node-html-parser": "^6.1.13",
+        "toad-scheduler": "^3.0.1"
+    },
+    "devDependencies": {
+        "@typescript-eslint/eslint-plugin": "^8.20.0",
+        "@typescript-eslint/parser": "^8.20.0",
+        "eslint": "^8.57.1",
+        "prettier": "^3.4.2",
+        "tsup": "^8.3.5",
+        "tsx": "^4.19.2",
+        "typescript": "^5.7.2"
+    }
 }

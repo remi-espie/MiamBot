@@ -1,4 +1,3 @@
-
 # Usage
 
 1. Fill `.env` file
