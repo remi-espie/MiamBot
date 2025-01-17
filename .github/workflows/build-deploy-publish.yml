@@ -1,0 +1,66 @@
+# This workflow will do a clean installation of node dependencies, cache/restore them, build the source code and run tests across different versions of node
+# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-nodejs
+
+name: Build and deploy
+
+on:
+    push:
+        branches: ['main']
+
+jobs:
+    build:
+        runs-on: ubuntu-latest
+
+        steps:
+            - uses: actions/checkout@v3
+            - name: Use Node.js
+              uses: actions/setup-node@v3
+              with:
+                  node-version: 18.x
+                  cache: 'npm'
+            - name: Install packages
+              run: npm install
+            - name: Run ESLint check
+              run: npx eslint .
+            - name: Run Prettier check
+              run: npx prettier . --check
+            - name: Build project
+              run: npm run build
+
+    publish:
+        needs: build
+
+        permissions:
+            packages: write
+
+        env:
+            REGISTRY: ghcr.io
+            IMAGE_NAME: ${{ github.repository }}
+
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout
+              uses: actions/checkout@v3
+
+            - uses: docker/login-action@v2
+              name: Log in to the container registry
+              with:
+                  registry: ${{ env.REGISTRY }}
+                  username: ${{ github.actor }}
+                  password: ${{ secrets.GITHUB_TOKEN }}
+
+            - uses: docker/metadata-action@v4
+              name: Extract metadata (tags, labels) for Docker
+              id: meta
+              with:
+                  images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+                  tags: |
+                      latest
+
+            - uses: docker/build-push-action@v4
+              name: Build and push the Docker image
+              with:
+                  context: .
+                  push: true
+                  tags: ${{ steps.meta.outputs.tags }}
+                  labels: ${{ steps.meta.outputs.labels }}
