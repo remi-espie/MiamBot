@@ -101,7 +101,7 @@ export async function update_foods(fromCommand: boolean, channel: TextBasedChann
       embeds.push(
           new EmbedBuilder()
             .setTitle(`${restaurantName} ${emote}`)
-            .setDescription("<a:Down:1316797112700112908>︲**"+result[restaurantName].date_title+"**")
+            .setDescription("⬇️ **"+result[restaurantName].date_title+"**")
             .setFields(result[restaurantName].sections.map((section: any) => {
               let sectionString = "";
               for(let i = 0; i < section.foodOptions.length; i++){
@@ -111,7 +111,7 @@ export async function update_foods(fromCommand: boolean, channel: TextBasedChann
                   sectionString += "\n\n"
               }
   
-              return {name: "<a:Red_Arrow_Right:1316797131142467765> "+section.title, value: sectionString, inline: true}
+              return {name: "➡️ "+section.title, value: sectionString, inline: true}
             }))
             .setColor("#fc9356")
             .setFooter({text: "Made with ❤️ by @wh0w | "+new Date().toLocaleString()})
