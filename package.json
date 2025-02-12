@@ -15,7 +15,7 @@
   "author": "wh0w",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^14.16.3",
+    "discord.js": "^14.18.0",
     "dotenv": "^16.4.7",
     "node-html-parser": "^6.1.13",
     "toad-scheduler": "^3.0.1"
